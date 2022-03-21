@@ -39,28 +39,14 @@ class Lienzo(act:MainActivity) : View(act) {
         super.onDraw(c)
         var p = Paint();
 
+        // Colinas
         c.drawColor(colorCielo)
 
         // Colinas
         dibujarColinas(p,c, colorColinas)
 
-        //ARBOL
-//        p.color = Color.rgb(180,114,20)
-//        c.drawRect(500f,700f,550f,800f,p)
-//        p.color = Color.rgb(10,62,12)
-//        c.drawOval(450f,470f,600f,565f,p)
-//        c.drawOval(450f,630f,600f,720f,p)
-//        c.drawOval(450f,560f,600f,650f,p)
-
-        //CASITA
-        p.style = Paint.Style.FILL
-        p.color = Color.rgb(1,87,12) // color madera
-        c.drawRect(1250f, 400f, 1650f, 600f,p)
-        p.color = Color.rgb(51, 14,2) //PUERTA
-        c.drawRect(1300f,470f,1380f, 600f, p)
-        p.color = Color.rgb(3,29,174) // color calido
-        c.drawRect(1460f,470f,1560f,540f,p)
-        p.color = Color.rgb(166,128,88) // Color rojillo
+        // Casa
+        dibujarCasa(p, c)
 
         var path = Path()
         path.moveTo(1210f, 430f)
@@ -69,10 +55,6 @@ class Lienzo(act:MainActivity) : View(act) {
         path.lineTo(1245f, 330f)
         path.lineTo(1210f, 430f)
         c.drawPath(path, p)
-
-        //CHIMENEA
-        p.color = Color.rgb(162,61,1)
-        c.drawRect(1600f,275f,1520f, 360f, p)
 
         // Se inicia la corutina
         corrutina.start()
@@ -167,5 +149,20 @@ class Lienzo(act:MainActivity) : View(act) {
                 5f,p
             )
         }
+    }
+
+    fun dibujarCasa(p:Paint, c:Canvas){
+        p.style = Paint.Style.FILL
+        p.color = Color.rgb(1,87,12) // color madera
+        c.drawRect(1250f, 400f, 1650f, 600f,p)
+        p.color = Color.rgb(51, 14,2) //PUERTA
+        c.drawRect(1300f,470f,1380f, 600f, p)
+        p.color = Color.rgb(3,29,174) // color calido
+        c.drawRect(1460f,470f,1560f,540f,p)
+        p.color = Color.rgb(166,128,88) // Color rojillo
+
+        //CHIMENEA
+        p.color = Color.rgb(162,61,1)
+        c.drawRect(1600f,275f,1520f, 360f, p)
     }
 }
